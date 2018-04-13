@@ -1,0 +1,48 @@
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script> 
+
+<script>
+
+    var data = {
+
+            __metadata: { 'type': 'SP.Data.CountryListItem' },
+
+           Title: 'red',
+         
+      };
+
+    
+
+      //  var siteurl = _spPageContextInfo.webAbsoluteUrl;
+
+        $.ajax({
+
+                   url: _spPageContextInfo.webAbsoluteUrl + "/_api/web/lists/getbytitle('Country')/items",
+
+                   method: "POST",
+                                  data: JSON.stringify(data),
+
+                   headers: {   
+ "accept": "application/json;odata=verbose",   
+            "content-type": "application/json;odata=verbose",   
+            "X-RequestDigest": $("#__REQUESTDIGEST").val()                                    
+
+                   },
+
+                   success: function (data) {
+
+                              alert('Item added successfully');
+
+                  },
+
+                  error: function (error) {
+
+                      alert("Error: "+ JSON.stringify(error));
+
+                 }
+
+          });
+
+   
+
+</script>
